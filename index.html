@@ -31,14 +31,16 @@
 </div>
   
 <div class="bindings">
+  <!-- 左 -->
   <section class="card">
     <h2>左</h2>
+
     <div class="angle">
-      角度：<input id="left-angle" placeholder="+15">
+      角度：
+      <input id="left-angle" placeholder="+15">
     </div>
 
     <div class="holes" data-bind="left">
-      <!-- 上段 -->
       <div class="row">
         <div class="hole" data-row="top" data-index="0"></div>
         <div class="hole" data-row="top" data-index="1"></div>
@@ -47,8 +49,6 @@
         <div class="hole" data-row="top" data-index="4"></div>
         <div class="hole" data-row="top" data-index="5"></div>
       </div>
-
-      <!-- 下段 -->
       <div class="row">
         <div class="hole" data-row="bottom" data-index="0"></div>
         <div class="hole" data-row="bottom" data-index="1"></div>
@@ -60,11 +60,20 @@
     </div>
   </section>
 
+  <!-- 右 -->
   <section class="card">
     <h2>右</h2>
+
     <div class="angle">
-      角度：<input id="right-angle" placeholder="-9">
+      角度：
+      <input id="right-angle" placeholder="-9">
     </div>
+
+    <div class="holes" data-bind="right">
+      <!-- 左と同じ構造 -->
+    </div>
+  </section>
+</div>
 
     <div class="holes" data-bind="right">
       <!-- 同じ構造 -->
