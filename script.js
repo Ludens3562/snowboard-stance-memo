@@ -1,4 +1,4 @@
-const STORAGE_KEY = "snowboard-stance";
+const STORAGE_KEY = "snowboard-bindings";
 
 // 穴タップ
 document.querySelectorAll(".hole").forEach(hole => {
@@ -16,19 +16,14 @@ document.querySelectorAll("input").forEach(input => {
 // 保存
 function saveData() {
   const data = {
-    front: getFootData("front"),
-    back: getFootData("back"),
+    left: getBindData("left"),
+    right: getBindData("right"),
     angles: {
-      front: document.getElementById("front-angle").value,
-      back: document.getElementById("back-angle").value
+      left: document.getElementById("left-angle").value,
+      right: document.getElementById("right-angle").value
     }
   };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-meta: {
-  board: document.getElementById("board-name").value,
-  date: document.getElementById("ride-date").value,
-  snow: document.getElementById("snow-type").value
 }
 
 // 読み込み
