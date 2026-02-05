@@ -2,13 +2,10 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-
-  <!-- スマホ・PWAで必須 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Snowboard Binding Memo</title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,69 +13,70 @@
 
   <h1>🏂 Binding Memo</h1>
 
-  <!-- 全体ラッパー -->
-  <div class="container">
+  <div class="board">
 
-    <!-- 左足 -->
-    <div class="binding-card" data-side="left">
-      <h2>左</h2>
+    <!-- 左側 -->
+    <div class="binding" data-side="left">
+      <h2>LEFT</h2>
 
-      <!-- 上段 -->
-      <div class="row">
-        <button class="hole" data-id="left-1"></button>
-        <button class="hole" data-id="left-2"></button>
-        <button class="hole" data-id="left-3"></button>
-        <button class="hole" data-id="left-4"></button>
-      </div>
+      <div class="holes">
+        <!-- 上段 -->
+        <div class="row">
+          <button class="hole" data-id="L-1"></button>
+          <button class="hole" data-id="L-2"></button>
+          <button class="hole" data-id="L-3"></button>
+          <button class="hole" data-id="L-4"></button>
+        </div>
 
-      <!-- 下段 -->
-      <div class="row">
-        <button class="hole" data-id="left-5"></button>
-        <button class="hole" data-id="left-6"></button>
-        <button class="hole" data-id="left-7"></button>
-        <button class="hole" data-id="left-8"></button>
+        <!-- 下段 -->
+        <div class="row">
+          <button class="hole" data-id="L-5"></button>
+          <button class="hole" data-id="L-6"></button>
+          <button class="hole" data-id="L-7"></button>
+          <button class="hole" data-id="L-8"></button>
+        </div>
       </div>
 
       <input
         type="text"
         class="angle"
-        placeholder="角度メモ（例：+15）"
+        placeholder="角度（例：+15）"
         data-angle="left"
       >
     </div>
 
-    <!-- 右足 -->
-    <div class="binding-card" data-side="right">
-      <h2>右</h2>
+    <!-- 右側 -->
+    <div class="binding" data-side="right">
+      <h2>RIGHT</h2>
 
-      <!-- 上段 -->
-      <div class="row">
-        <button class="hole" data-id="right-1"></button>
-        <button class="hole" data-id="right-2"></button>
-        <button class="hole" data-id="right-3"></button>
-        <button class="hole" data-id="right-4"></button>
-      </div>
+      <div class="holes">
+        <!-- 上段 -->
+        <div class="row">
+          <button class="hole" data-id="R-1"></button>
+          <button class="hole" data-id="R-2"></button>
+          <button class="hole" data-id="R-3"></button>
+          <button class="hole" data-id="R-4"></button>
+        </div>
 
-      <!-- 下段 -->
-      <div class="row">
-        <button class="hole" data-id="right-5"></button>
-        <button class="hole" data-id="right-6"></button>
-        <button class="hole" data-id="right-7"></button>
-        <button class="hole" data-id="right-8"></button>
+        <!-- 下段 -->
+        <div class="row">
+          <button class="hole" data-id="R-5"></button>
+          <button class="hole" data-id="R-6"></button>
+          <button class="hole" data-id="R-7"></button>
+          <button class="hole" data-id="R-8"></button>
+        </div>
       </div>
 
       <input
         type="text"
         class="angle"
-        placeholder="角度メモ（例：-6）"
+        placeholder="角度（例：-6）"
         data-angle="right"
       >
     </div>
 
   </div>
 
-  <!-- JS（必ずbodyの一番下） -->
   <script src="script.js"></script>
-
 </body>
 </html>
