@@ -10,10 +10,8 @@ body {
 }
 
 .hole {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #ddd;
+  width: 40px;
+  height: 40px;
 }
 
 .hole.active {
