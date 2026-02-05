@@ -1,6 +1,6 @@
 const STORAGE_KEY = "snowboard-bindings";
 
-// 穴タップ
+/* 穴クリック */
 document.querySelectorAll(".hole").forEach(hole => {
   hole.addEventListener("click", () => {
     hole.classList.toggle("active");
@@ -8,38 +8,36 @@ document.querySelectorAll(".hole").forEach(hole => {
   });
 });
 
-// 角度入力
+/* 角度入力 */
 document.querySelectorAll("input").forEach(input => {
   input.addEventListener("input", saveData);
 });
 
-// 保存
+/* select変更 */
+document.querySelectorAll("select").forEach(sel => {
+  sel.addEventListener("change", saveData);
+});
+
+/* 保存 */
 function saveData() {
   const data = {
     left: getBindData("left"),
     right: getBindData("right"),
     angles: {
-      left: document.getElementById("left-angle").value,
-      right: document.getElementById("right-angle").value
+      left: document.getElementById("left-angle")?.value || "",
+      right: document.getElementById("right-angle")?.value || ""
+    },
+    meta: {
+      board: document.getElementById("board-name")?.value || "",
+      date: document.getElementById("ride-date")?.value || "",
+      snow: document.getElementById("snow-type")?.value || ""
     }
   };
+
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
-// 読み込み
-function loadData() {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if (!saved) return;
-
-  const data = JSON.parse(saved);
-
-  restoreFoot("front", data.front);
-  restoreFoot("back", data.back);
-
-  document.getElementById("left").value = data.angles.front || "";
-  document.getElementById("right").value = data.angles.back || "";
-}
-
+/* 取得 */
 function getBindData(side) {
   const holes = [];
   document
@@ -53,6 +51,29 @@ function getBindData(side) {
   return holes;
 }
 
+/* 復元 */
+function loadData() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (!saved) return;
+
+  const data = JSON.parse(saved);
+
+  restoreBind("left", data.left || []);
+  restoreBind("right", data.right || []);
+
+  if (data.angles) {
+    document.getElementById("left-angle").value = data.angles.left || "";
+    document.getElementById("right-angle").value = data.angles.right || "";
+  }
+
+  if (data.meta) {
+    document.getElementById("board-name").value = data.meta.board || "";
+    document.getElementById("ride-date").value = data.meta.date || "";
+    document.getElementById("snow-type").value = data.meta.snow || "";
+  }
+}
+
+/* 穴復元 */
 function restoreBind(side, holes) {
   holes.forEach(h => {
     const el = document.querySelector(
@@ -62,7 +83,5 @@ function restoreBind(side, holes) {
   });
 }
 
+/* 初期読み込み */
 loadData();
-document.getElementById("board-name").value = data.meta?.board || "";
-document.getElementById("ride-date").value = data.meta?.date || "";
-document.getElementById("snow-type").value = data.meta?.snow || "";
