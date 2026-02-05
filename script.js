@@ -36,8 +36,8 @@ function loadData() {
   restoreFoot("front", data.front);
   restoreFoot("back", data.back);
 
-  document.getElementById("front-angle").value = data.angles.front || "";
-  document.getElementById("back-angle").value = data.angles.back || "";
+  document.getElementById("left").value = data.angles.front || "";
+  document.getElementById("right").value = data.angles.back || "";
 }
 
 function getBindData(side) {
