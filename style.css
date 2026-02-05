@@ -43,3 +43,9 @@ select, .meta input {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
+
+@media (max-width: 480px) {
+  .bindings {
+    grid-template-columns: 1fr;
+  }
+}
