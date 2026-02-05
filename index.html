@@ -1,97 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+
+  <!-- スマホ・PWAで必須 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>スノボスタンスメモ</title>
+
+  <title>Snowboard Binding Memo</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
- <div class="meta">
-  <div>
-    板名：
-    <input type="text" id="board-name" placeholder="例：FNTC TNT">
-  </div>
+  <h1>🏂 Binding Memo</h1>
 
-  <div>
-    日付：
-    <input type="date" id="ride-date">
-  </div>
+  <!-- 全体ラッパー -->
+  <div class="container">
 
-  <div>
-    雪質：
-    <select id="snow-type">
-      <option value="">選択</option>
-      <option value="パウダー">パウダー</option>
-      <option value="圧雪">圧雪</option>
-      <option value="春雪">春雪</option>
-      <option value="アイス">アイス</option>
-    </select>
-  </div>
-</div>
-  
-<div class="bindings">
-  <!-- 左 -->
-  <section class="card">
-    <h2>左</h2>
+    <!-- 左足 -->
+    <div class="binding-card" data-side="left">
+      <h2>左</h2>
 
-    <div class="angle">
-      角度：
-      <input id="left-angle" placeholder="+15">
-    </div>
-
-    <div class="holes" data-bind="left">
+      <!-- 上段 -->
       <div class="row">
-        <div class="hole" data-row="top" data-index="0"></div>
-        <div class="hole" data-row="top" data-index="1"></div>
-        <div class="hole" data-row="top" data-index="2"></div>
-        <div class="hole" data-row="top" data-index="3"></div>
-        <div class="hole" data-row="top" data-index="4"></div>
-        <div class="hole" data-row="top" data-index="5"></div>
+        <button class="hole" data-id="left-1"></button>
+        <button class="hole" data-id="left-2"></button>
+        <button class="hole" data-id="left-3"></button>
+        <button class="hole" data-id="left-4"></button>
       </div>
+
+      <!-- 下段 -->
       <div class="row">
-        <div class="hole" data-row="bottom" data-index="0"></div>
-        <div class="hole" data-row="bottom" data-index="1"></div>
-        <div class="hole" data-row="bottom" data-index="2"></div>
-        <div class="hole" data-row="bottom" data-index="3"></div>
-        <div class="hole" data-row="bottom" data-index="4"></div>
-        <div class="hole" data-row="bottom" data-index="5"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 右 -->
-  <section class="card">
-    <h2>右</h2>
-
-    <div class="angle">
-      角度：
-      <input id="right-angle" placeholder="-9">
-    </div>
-
-    <div class="holes" data-bind="right">
-       <div class="row">
-        <div class="hole" data-row="top" data-index="0"></div>
-        <div class="hole" data-row="top" data-index="1"></div>
-        <div class="hole" data-row="top" data-index="2"></div>
-        <div class="hole" data-row="top" data-index="3"></div>
-        <div class="hole" data-row="top" data-index="4"></div>
-        <div class="hole" data-row="top" data-index="5"></div>
-      </div>
-      <div class="row">
-        <div class="hole" data-row="bottom" data-index="0"></div>
-        <div class="hole" data-row="bottom" data-index="1"></div>
-        <div class="hole" data-row="bottom" data-index="2"></div>
-        <div class="hole" data-row="bottom" data-index="3"></div>
-        <div class="hole" data-row="bottom" data-index="4"></div>
-        <div class="hole" data-row="bottom" data-index="5"></div>
-      </div>
-  </section>
-  
-</div>
-
-  
-<script src="script.js"></script>  
-</body>
-</html>
+        <button class="hole" data-id="left-5"></button>
+        <button class="hole" data-id="left-6"></button>
+        <button class="hole" data-id="left-7"></button>
+        <button class="hole" data-id="left-8"></button>
+      <
