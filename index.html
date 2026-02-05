@@ -13,22 +13,33 @@
 
   <h1>🏂 Binding Memo</h1>
 
-  <div class="board">
+  <!-- 基本情報 -->
+  <section class="info">
+    <label>
+      板の名前
+      <input type="text" id="boardName" placeholder="例：OGASAKA CT">
+    </label>
 
-    <!-- 左側 -->
+    <label>
+      雪質
+      <input type="text" id="snowType" placeholder="例：パウダー / 圧雪">
+    </label>
+  </section>
+
+  <!-- バインディング -->
+  <section class="board">
+
+    <!-- LEFT -->
     <div class="binding" data-side="left">
       <h2>LEFT</h2>
 
       <div class="holes">
-        <!-- 上段 -->
         <div class="row">
           <button class="hole" data-id="L-1"></button>
           <button class="hole" data-id="L-2"></button>
           <button class="hole" data-id="L-3"></button>
           <button class="hole" data-id="L-4"></button>
         </div>
-
-        <!-- 下段 -->
         <div class="row">
           <button class="hole" data-id="L-5"></button>
           <button class="hole" data-id="L-6"></button>
@@ -40,25 +51,22 @@
       <input
         type="text"
         class="angle"
-        placeholder="角度（例：+15）"
         data-angle="left"
+        placeholder="角度（例：+15）"
       >
     </div>
 
-    <!-- 右側 -->
+    <!-- RIGHT -->
     <div class="binding" data-side="right">
       <h2>RIGHT</h2>
 
       <div class="holes">
-        <!-- 上段 -->
         <div class="row">
           <button class="hole" data-id="R-1"></button>
           <button class="hole" data-id="R-2"></button>
           <button class="hole" data-id="R-3"></button>
           <button class="hole" data-id="R-4"></button>
         </div>
-
-        <!-- 下段 -->
         <div class="row">
           <button class="hole" data-id="R-5"></button>
           <button class="hole" data-id="R-6"></button>
@@ -70,12 +78,12 @@
       <input
         type="text"
         class="angle"
-        placeholder="角度（例：-6）"
         data-angle="right"
+        placeholder="角度（例：-6）"
       >
     </div>
 
-  </div>
+  </section>
 
   <script src="script.js"></script>
 </body>
