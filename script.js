@@ -80,6 +80,7 @@ const list = (selectedBoard === "__ALL__")
   historyDiv.innerHTML = "";
   
   renderTabs();
+  renderRefSlots();
 
   list.forEach((item, idx) => {
     const card = document.createElement("section");
