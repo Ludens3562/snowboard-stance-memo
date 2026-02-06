@@ -73,7 +73,10 @@ function renderTabs() {
 }
 
 function render() {
-  const list = loadList();
+  const all = loadList();
+const list = selectedBoard
+  ? all.filter(x => (x.board || "").trim() === selectedBoard)
+  : all;
   historyDiv.innerHTML = "";
   
   renderTabs();
