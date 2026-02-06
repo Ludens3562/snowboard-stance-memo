@@ -56,7 +56,7 @@ function renderTabs() {
     new Set(list.map(x => (x.board || "").trim()))
   );
 
-  const items = ["", ...boards];
+  const items = ["__ALL__", ...boards];
 
   tabsDiv.innerHTML = items.map(b => {
     const label = b === "" ? "未入力" : b;
