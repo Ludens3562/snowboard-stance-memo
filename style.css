@@ -145,3 +145,15 @@ h1 {
   border-color: #4caf50;
   color: #fff;
 }
+.ref-line {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.ref-slot {
+  width: 36px;
+  height: 18px;
+  border-top: 2px dashed #ccc;
+}
