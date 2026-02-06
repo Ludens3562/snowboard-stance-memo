@@ -173,12 +173,12 @@ h1 {
 }
 
 .mini-x{
-  width:16px;
-  height:16px;
+  width:12px;
+  height:12px;
   display:inline-flex;      /* ← これ重要！空でも幅を持つ */
   align-items:center;
   justify-content:center;
-  font-size:14px;
+  font-size:18px;
   color:#e53935;
   font-weight:bold;
   line-height:1;
