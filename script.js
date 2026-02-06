@@ -175,7 +175,7 @@ const list = (selectedBoard === "__ALL__")
 　});
 }
 
-function renderMini(holesState) {
+function renderMini(holesState, ref) {
   const total = 24;
   const arr = Array.from({ length: total }, (_, i) => !!holesState[i]);
   const left = arr.slice(0, 12);
@@ -183,22 +183,30 @@ function renderMini(holesState) {
 
   return `
     <div class="mini-bindings">
-      ${miniSide("左", left)}
-      ${miniSide("右", right)}
+      ${miniSide("左", left, ref?.left)}
+      ${miniSide("右", right, ref?.right)}
     </div>
   `;
 }
 
-function miniSide(label, sideArr) {
+function miniSide(label, sideArr, refIndex) {
   const top = sideArr.slice(0, 6);
   const bottom = sideArr.slice(6, 12);
 
   return `
     <div class="mini-side">
       <div class="mini-label">${label}</div>
+
       <div class="mini-row">
         ${top.map(on => `<span class="mini-hole ${on ? "active" : ""}"></span>`).join("")}
       </div>
+
+      <div class="mini-ref">
+        ${Array.from({ length: 6 }, (_, i) =>
+          `<span class="mini-x">${i === refIndex ? "×" : ""}</span>`
+        ).join("")}
+      </div>
+
       <div class="mini-row">
         ${bottom.map(on => `<span class="mini-hole ${on ? "active" : ""}"></span>`).join("")}
       </div>
