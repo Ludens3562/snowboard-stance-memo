@@ -11,7 +11,7 @@ const rightAngleEl = document.getElementById("right-angle");
 const saveBtn = document.getElementById("saveBtn");
 const clearBtn = document.getElementById("clearBtn"); // ← 追加
 const tabsDiv = document.getElementById("boardTabs");
-let selectedBoard = "";
+let selectedBoard = "__ALL__";
 
 // 穴タップ
 holes.forEach(h => h.addEventListener("click", () => h.classList.toggle("active")));
