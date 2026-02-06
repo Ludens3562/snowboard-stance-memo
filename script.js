@@ -53,7 +53,7 @@ function renderTabs() {
   const list = loadList();
 
   const boards = Array.from(
-    new Set(list.map(x => (x.board || "").trim()).filter(Boolean))
+    new Set(list.map(x => (x.board || "").trim()))
   );
 
   const items = ["", ...boards];
