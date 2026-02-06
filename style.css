@@ -113,3 +113,13 @@ h1 {
 .mini-row { display: flex; justify-content: center; gap: 4px; margin-bottom: 4px; }
 .mini-hole { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #999; display: inline-block; }
 .mini-hole.active { background: #4caf50; border-color: #4caf50; }
+
+#saveBtn, #clearBtn {
+  padding: 10px 12px;
+  font-size: 16px;
+  width: 100%;
+}
+
+#clearBtn {
+  margin-top: 8px;
+}
