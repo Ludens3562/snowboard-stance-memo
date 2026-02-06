@@ -65,7 +65,8 @@ function render() {
       <div class="history-preview">
         ${renderMini(item.holes || [])}
       </div>
-
+      
+      <button type="button" data-load="${idx}">読込</button>
       <button type="button" data-del="${idx}">削除</button>
     `;
 
