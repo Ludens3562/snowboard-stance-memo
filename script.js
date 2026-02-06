@@ -158,6 +158,10 @@ const list = (selectedBoard === "__ALL__")
 
     holes.forEach((h, i) => {
       h.classList.toggle("active", !!item.holes?.[i]);
+
+      // ×復元
+reference = item.reference || { left: null, right: null };
+renderRefSlots();
     });
   });
 });
