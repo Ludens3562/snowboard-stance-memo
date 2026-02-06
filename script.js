@@ -9,10 +9,22 @@ const snowEl = document.getElementById("snow");
 const leftAngleEl = document.getElementById("left-angle");
 const rightAngleEl = document.getElementById("right-angle");
 const saveBtn = document.getElementById("saveBtn");
+const clearBtn = document.getElementById("clearBtn"); // ← 追加
 
 // 穴タップ
 holes.forEach(h => h.addEventListener("click", () => h.classList.toggle("active")));
 
+// ✅ クリア（保存の外に置く）
+clearBtn.addEventListener("click", () => {
+  boardEl.value = "";
+  dateEl.value = "";
+  snowEl.value = "";
+  leftAngleEl.value = "";
+  rightAngleEl.value = "";
+  holes.forEach(h => h.classList.remove("active"));
+});
+
+// 保存
 saveBtn.addEventListener("click", () => {
   const item = {
     id: String(Date.now()),
@@ -24,20 +36,6 @@ saveBtn.addEventListener("click", () => {
     holes: holes.map(h => h.classList.contains("active"))
   };
 
-clearBtn.addEventListener("click", () => {
-  alert("クリア押された！");
-  boardEl.value = "";
-  dateEl.value = "";
-  snowEl.value = "";
-  leftAngleEl.value = "";
-  rightAngleEl.value = "";
-  holes.forEach(h => h.classList.remove("active"));
-});
-
-  // 穴を全部OFF
-  holes.forEach(h => h.classList.remove("active"));
-});
-  
   const list = loadList();
   list.unshift(item);
   localStorage.setItem(KEY, JSON.stringify(list));
@@ -86,7 +84,6 @@ function render() {
 }
 
 function renderMini(holesState) {
-  // 24個想定：左12(上6下6) + 右12(上6下6)
   const total = 24;
   const arr = Array.from({ length: total }, (_, i) => !!holesState[i]);
   const left = arr.slice(0, 12);
