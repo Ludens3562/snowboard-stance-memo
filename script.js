@@ -76,27 +76,32 @@ function renderTabs() {
 }
 
 function renderRefSlots() {
+  // まず左右それぞれ6個のスロットを作る＋referenceを表示
   document.querySelectorAll(".ref-line").forEach(line => {
     const side = line.dataset.side;
 
     line.innerHTML = Array.from({ length: 6 }, (_, i) =>
       `<div class="ref-slot" data-index="${i}" data-side="${side}"></div>`
     ).join("");
+
+    // ★ここで保存されているreferenceを反映して×を表示する
+    const idx = reference?.[side];
+    if (idx !== null && idx !== undefined) {
+      const slot = line.querySelector(`.ref-slot[data-index="${idx}"]`);
+      if (slot) slot.textContent = "×";
+    }
   });
 
+  // クリックで×移動＆reference更新
   document.querySelectorAll(".ref-slot").forEach(slot => {
     slot.addEventListener("click", () => {
       const parent = slot.parentElement;
 
-      // 同じ側の×を全部消す
       parent.querySelectorAll(".ref-slot").forEach(s => (s.textContent = ""));
-
-      // クリックした所に ×
       slot.textContent = "×";
 
-      // ★ここで保存用の値を更新
-      const side = slot.dataset.side;            // "left" or "right"
-      const index = Number(slot.dataset.index);  // 0〜5
+      const side = slot.dataset.side;           // "left" or "right"
+      const index = Number(slot.dataset.index); // 0〜5
       reference[side] = index;
     });
   });
