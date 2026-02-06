@@ -163,9 +163,8 @@ const list = (selectedBoard === "__ALL__")
     // ×復元（forEachの外で1回だけ）
     reference = item.reference || { left: null, right: null };
     renderRefSlots();
-  });
-});
-  
+　  });
+　});
 }
 
 function renderMini(holesState) {
