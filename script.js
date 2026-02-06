@@ -82,6 +82,25 @@ function render() {
       render();
     });
   });
+
+  historyDiv.querySelectorAll("button[data-load]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const idx = Number(btn.dataset.load);
+    const item = loadList()[idx];
+    if (!item) return;
+
+    boardEl.value = item.board || "";
+    dateEl.value = item.date || "";
+    snowEl.value = item.snow || "";
+    leftAngleEl.value = item.leftAngle || "";
+    rightAngleEl.value = item.rightAngle || "";
+
+    holes.forEach((h, i) => {
+      h.classList.toggle("active", !!item.holes?.[i]);
+    });
+  });
+});
+  
 }
 
 function renderMini(holesState) {
