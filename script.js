@@ -157,13 +157,12 @@ const list = (selectedBoard === "__ALL__")
     rightAngleEl.value = item.rightAngle || "";
 
     holes.forEach((h, i) => {
-  h.classList.toggle("active", !!item.holes?.[i]);
-});
-
-// ★ ここに移動
-reference = item.reference || { left: null, right: null };
-renderRefSlots();
+      h.classList.toggle("active", !!item.holes?.[i]);
     });
+
+    // ×復元（forEachの外で1回だけ）
+    reference = item.reference || { left: null, right: null };
+    renderRefSlots();
   });
 });
   
