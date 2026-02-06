@@ -37,7 +37,7 @@ saveBtn.addEventListener("click", () => {
     snow: snowEl.value,
     leftAngle: leftAngleEl.value.trim(),
     rightAngle: rightAngleEl.value.trim(),
-    holes: holes.map(h => h.classList.contains("active"))
+    holes: holes.map(h => h.classList.contains("active")),
     reference: { ...reference }
   };
 
@@ -157,9 +157,10 @@ const list = (selectedBoard === "__ALL__")
     rightAngleEl.value = item.rightAngle || "";
 
     holes.forEach((h, i) => {
-      h.classList.toggle("active", !!item.holes?.[i]);
+  h.classList.toggle("active", !!item.holes?.[i]);
+});
 
-      // ×復元
+// ★ ここに移動
 reference = item.reference || { left: null, right: null };
 renderRefSlots();
     });
