@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ビス位置メモ</title>
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=20">
 </head>
 <body>
 
@@ -13,51 +13,38 @@
 <section class="card">
   <h2>セッティング情報</h2>
 
-  板名：
-  <input id="board" placeholder="TNT">
+  <div class="meta">
+    <label>板名：<input id="board" type="text" placeholder="例：TNT"></label>
+    <label>日付：<input id="date" type="date"></label>
 
-  日付：
-  <input type="date" id="date">
+    <label>雪質：
+      <select id="snow">
+        <option value="">選択</option>
+        <option value="パウダー">パウダー</option>
+        <option value="圧雪">圧雪</option>
+        <option value="春雪">春雪</option>
+        <option value="アイス">アイス</option>
+      </select>
+    </label>
 
-  雪質：
-  <select id="snow">
-    <option>パウダー</option>
-    <option>圧雪</option>
-    <option>春雪</option>
-    <option>アイス</option>
-  </select>
+    <label>左角度：<input id="left-angle" type="text" placeholder="+15"></label>
+    <label>右角度：<input id="right-angle" type="text" placeholder="-9"></label>
+  </div>
 
-  左角度：
-  <input id="left-angle" placeholder="+15">
-
-  右角度：
-  <input id="right-angle" placeholder="-9">
-
-  <button id="saveBtn">保存</button>
+  <button id="saveBtn" type="button">保存</button>
 </section>
 
-<div id="history"></div>
-  
 <div class="bindings">
-
   <section class="card">
     <h2>左</h2>
     <div class="holes" data-side="left">
       <div class="row">
-        <div class="hole" data-row="top" data-index="0"></div>
-        <div class="hole" data-row="top" data-index="1"></div>
-        <div class="hole" data-row="top" data-index="2"></div>
-        <div class="hole" data-row="top" data-index="3"></div>
-        <div class="hole" data-row="top" data-index="4"></div>
-        <div class="hole" data-row="top" data-index="5"></div>
+        <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+        <div class="hole"></div><div class="hole"></div><div class="hole"></div>
       </div>
       <div class="row">
-        <div class="hole" data-row="bottom" data-index="0"></div>
-        <div class="hole" data-row="bottom" data-index="1"></div>
-        <div class="hole" data-row="bottom" data-index="2"></div>
-        <div class="hole" data-row="bottom" data-index="3"></div>
-        <div class="hole" data-row="bottom" data-index="4"></div>
-        <div class="hole" data-row="bottom" data-index="5"></div>
+        <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+        <div class="hole"></div><div class="hole"></div><div class="hole"></div>
       </div>
     </div>
   </section>
@@ -66,26 +53,19 @@
     <h2>右</h2>
     <div class="holes" data-side="right">
       <div class="row">
-        <div class="hole" data-row="top" data-index="0"></div>
-        <div class="hole" data-row="top" data-index="1"></div>
-        <div class="hole" data-row="top" data-index="2"></div>
-        <div class="hole" data-row="top" data-index="3"></div>
-        <div class="hole" data-row="top" data-index="4"></div>
-        <div class="hole" data-row="top" data-index="5"></div>
+        <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+        <div class="hole"></div><div class="hole"></div><div class="hole"></div>
       </div>
       <div class="row">
-        <div class="hole" data-row="bottom" data-index="0"></div>
-        <div class="hole" data-row="bottom" data-index="1"></div>
-        <div class="hole" data-row="bottom" data-index="2"></div>
-        <div class="hole" data-row="bottom" data-index="3"></div>
-        <div class="hole" data-row="bottom" data-index="4"></div>
-        <div class="hole" data-row="bottom" data-index="5"></div>
+        <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+        <div class="hole"></div><div class="hole"></div><div class="hole"></div>
       </div>
     </div>
   </section>
-
 </div>
 
-<script src="script.js"></script>
+<div id="history"></div>
+
+<script src="script.js?v=20"></script>
 </body>
 </html>
