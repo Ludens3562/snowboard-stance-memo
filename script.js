@@ -47,11 +47,24 @@ function render() {
   list.forEach((item, idx) => {
     const card = document.createElement("section");
     card.className = "card";
+
+    const title =
+      `${item.date || "日付なし"} / ${item.snow || "雪質なし"} / ${item.board || "板名なし"}`;
+
+    const angles =
+      `左 ${item.leftAngle || "?"}°　右 ${item.rightAngle || "?"}°`;
+
     card.innerHTML = `
-      <div><b>${escapeHtml(item.date || "日付なし")} / ${escapeHtml(item.snow || "雪質なし")} / ${escapeHtml(item.board || "板名なし")}</b></div>
-      <div>左 ${escapeHtml(item.leftAngle || "?")}°　右 ${escapeHtml(item.rightAngle || "?")}°</div>
+      <div><b>${escapeHtml(title)}</b></div>
+      <div>${escapeHtml(angles)}</div>
+
+      <div class="history-preview">
+        ${renderMini(item.holes || [])}
+      </div>
+
       <button type="button" data-del="${idx}">削除</button>
     `;
+
     historyDiv.appendChild(card);
   });
 
@@ -64,6 +77,40 @@ function render() {
       render();
     });
   });
+}
+
+// 履歴用ミニ表示（左右それぞれ：上段6＋下段6）
+function renderMini(holesState) {
+  // 24個想定：左12(上6下6) + 右12(上6下6)
+  const total = 24;
+  const arr = Array.from({ length: total }, (_, i) => !!holesState[i]);
+
+  const left = arr.slice(0, 12);
+  const right = arr.slice(12, 24);
+
+  return `
+    <div class="mini-bindings">
+      ${miniSide("左", left)}
+      ${miniSide("右", right)}
+    </div>
+  `;
+}
+
+function miniSide(label, sideArr) {
+  const top = sideArr.slice(0, 6);
+  const bottom = sideArr.slice(6, 12);
+
+  return `
+    <div class="mini-side">
+      <div class="mini-label">${label}</div>
+      <div class="mini-row">
+        ${top.map(on => `<span class="mini-hole ${on ? "active" : ""}"></span>`).join("")}
+      </div>
+      <div class="mini-row">
+        ${bottom.map(on => `<span class="mini-hole ${on ? "active" : ""}"></span>`).join("")}
+      </div>
+    </div>
+  `;
 }
 
 function escapeHtml(str) {
