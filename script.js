@@ -83,21 +83,20 @@ function renderRefSlots() {
     ).join("");
   });
 
-  // クリックで × 表示（まだ保存しない）
   document.querySelectorAll(".ref-slot").forEach(slot => {
     slot.addEventListener("click", () => {
       const parent = slot.parentElement;
 
       // 同じ側の×を全部消す
-      parent.querySelectorAll(".ref-slot").forEach(s => s.textContent = "");
+      parent.querySelectorAll(".ref-slot").forEach(s => (s.textContent = ""));
 
       // クリックした所に ×
       slot.textContent = "×";
 
+      // ★ここで保存用の値を更新
       const side = slot.dataset.side;            // "left" or "right"
-  const index = Number(slot.dataset.index);  // 0〜5
-  reference[side] = index;
-});
+      const index = Number(slot.dataset.index);  // 0〜5
+      reference[side] = index;
     });
   });
 }
