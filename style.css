@@ -437,3 +437,7 @@ h1{
 .ref-line{
   margin-top: -28px !important; /* ← ref-help の高さぶん上に持ち上げる */
 }
+
+.ref-help{
+  transform: translateY(-1px);
+}
