@@ -146,10 +146,10 @@ h1 {
   color: #fff;
 }
 .ref-line {
-  display: inline-flex;
+  display: flex;
   width: 256px;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   position: relative;
   margin-bottom: 0;
 }
@@ -234,7 +234,7 @@ h1 {
   position: absolute;
   left: var(--ref-x, 50%);
   top: 70%;
-  transform: translate(-45%, -45%);
+  transform: translate(-45%, -50%);
 
   font-size: 33px;
   font-weight: bold;
