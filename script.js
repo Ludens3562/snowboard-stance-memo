@@ -118,7 +118,7 @@ if (idx !== null && idx !== undefined) {
   const slot = line.querySelector(`.ref-slot[data-index="${idx}"]`);
   if (slot) {
     slot.classList.add("active");
-    setHelpX(side, slot); // ← 実測に変更
+    setHelpX(side, idx); // ← 実測に変更
   }
 } else {
   setHelpX(side, null); // ← 消すときも実測版
@@ -133,7 +133,7 @@ if (idx !== null && idx !== undefined) {
         const index = Number(slot.dataset.index);
         reference[side] = index;
 
-        setHelpX(side, slot);
+        setHelpX(side, idx);
       });
     });
   });
