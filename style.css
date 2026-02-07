@@ -233,8 +233,8 @@ h1 {
 
   position: absolute;
   left: var(--ref-x, 50%);
-  top: 70%;
-  transform: translate(-40%, -40%);
+  top: 50%;
+  transform: translate(-50%, -50%);
 
   font-size: 33px;
   font-weight: bold;
