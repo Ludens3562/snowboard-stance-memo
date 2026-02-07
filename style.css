@@ -475,3 +475,15 @@ text-shadow:
 .fav-btn:not(.active){
   color: #bbb;
 }
+
+/* ★タブだけ黄色 */
+.tab[data-board="__FAV__"]{
+  color: #f6c343;
+  font-weight: bold;
+}
+
+.tab[data-board="__FAV__"].active{
+  background: #f6c343;
+  color: white;
+  border-color: #f6c343;
+}
