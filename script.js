@@ -40,6 +40,7 @@ clearBtn.addEventListener("click", () => {
 saveBtn.addEventListener("click", () => {
   const item = {
     id: String(Date.now()),
+    favorite: false,
     board: boardEl.value.trim(),
     date: dateEl.value,
     snow: snowEl.value,
@@ -172,9 +173,13 @@ if (idx !== null && idx !== undefined) {
 function render() {
   const all = loadList();
   const list = (selectedBoard === "__ALL__")
-  ? all
-  : all.filter(x => (x.board || "").trim() === selectedBoard);
-  historyDiv.innerHTML = "";
+   ? all
+   : all.filter(x => (x.board || "").trim() === selectedBoard);
+
+// ★★★★★ ここに追加 ★★★★★
+list.sort((a, b) => Number(!!b.favorite) - Number(!!a.favorite));
+
+historyDiv.innerHTML = "";
   
   renderTabs();
   renderRefSlots();
@@ -195,9 +200,18 @@ function render() {
     const setupLine =
      `左 ${item.leftAngle || "?"}°  ${leftDisk}　右 ${item.rightAngle || "?"}°  ${rightDisk}`;
 
+    const fav = !!item.favorite;
+    const favLabel = fav ? "★" : "☆";
+
     card.innerHTML = `
-  <div><b>${escapeHtml(title)}</b></div>
-  <div>${escapeHtml(setupLine)}</div>
+     <div style="display:flex; justify-content:space-between; align-items:center;">
+      <b>${escapeHtml(title)}</b>
+      <button type="button" class="fav-btn ${fav ? "active" : ""}" data-fav-id="${item.id}">
+       ${favLabel}
+      </button>
+     </div>
+
+     <div>${escapeHtml(setupLine)}</div>
 
   <div class="history-preview">
     ${renderMini(item.holes || [], item.reference || { left: null, right: null })}
@@ -212,11 +226,17 @@ function render() {
     historyDiv.appendChild(card);
   });
 
-  historyDiv.querySelectorAll("button[data-del-id]").forEach(btn => {
+  historyDiv.querySelectorAll("[data-fav-id]").forEach(btn => {
    btn.addEventListener("click", () => {
-    const id = btn.dataset.delId;
-    const next = loadList().filter(x => x.id !== id);
-    localStorage.setItem(KEY, JSON.stringify(next));
+    const id = btn.dataset.favId;
+    const list = loadList();
+
+    const item = list.find(x => x.id === id);
+    if (!item) return;
+
+    item.favorite = !item.favorite;
+
+    localStorage.setItem(KEY, JSON.stringify(list));
     render();
   });
 });
