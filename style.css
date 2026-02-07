@@ -148,7 +148,7 @@ h1 {
 
 .ref-line {
   display: flex;
-  width: 100%;
+  width: 256px;
   justify-content: center;
   gap: 8px;
   position: relative;
