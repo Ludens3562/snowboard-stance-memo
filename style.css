@@ -76,6 +76,11 @@ h1{
   background: transparent;
 }
 
+.holes{
+  width: 256px;
+  margin: 0 auto;
+}
+
 .hole.active{
   background: #4caf50;
   border-color: #4caf50;
@@ -192,7 +197,7 @@ h1{
 ========================= */
 .ref-help{
   position: relative;
-  width: 228px;
+  width: 256px;
   height: 26px;
   line-height: 26px;
   margin: 4px auto 0;
