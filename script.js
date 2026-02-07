@@ -42,6 +42,8 @@ saveBtn.addEventListener("click", () => {
     rightAngle: rightAngleEl.value.trim(),
     holes: holes.map(h => h.classList.contains("active")),
     reference: { ...reference }
+
+    dateTime: new Date().toISOString(),
   };
 
   const list = loadList();
