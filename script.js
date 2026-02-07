@@ -90,7 +90,7 @@ function setHelpX(side, index) {
     return;
   }
 
-  const x = 18 + 44 * Number(index); // 36 + gap8 = 44
+  const x = 18 + 44 * Number(index) + 2; // 36 + gap8 = 44
 
   help.classList.add("active");
   help.style.setProperty("--ref-x", `${x}px`);
