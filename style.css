@@ -315,6 +315,31 @@ h1{
   }
 }
 
+/* ===== 履歴ボタン配置 ===== */
+.history-actions {
+  display: flex;
+  justify-content: space-between; /* ← 左右に分離 */
+  margin-top: 8px;
+}
+
+/* 読込（普通） */
+.btn-load {
+  padding: 6px 12px;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+}
+
+/* 削除（危険色） */
+.btn-del {
+  padding: 6px 12px;
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+}
+
 /* =========================
    Debug (必要なときだけON)
    使わないならこのブロック丸ごと消してOK
