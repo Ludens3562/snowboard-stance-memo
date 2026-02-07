@@ -103,7 +103,8 @@ function renderRefSlots() {
         line.querySelectorAll(".ref-slot").forEach(s => s.classList.remove("active"));
 
         // 押した所だけactive
-        slot.classList.add("active");
+        document.querySelector(`.ref-help[data-side="${side}"]`)
+         .classList.add("active");
 
         // 値を更新
         reference[side] = Number(slot.dataset.index);
