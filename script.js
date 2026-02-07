@@ -80,26 +80,24 @@ function renderTabs() {
   });
 }
 
-function setHelpXFromSlot(side, slotEl) {
+function setHelpX(side, index) {
   const help = document.querySelector(`.ref-help[data-side="${side}"]`);
-  if (!help) return;
+  const line = document.querySelector(`.ref-line[data-side="${side}"]`);
+  if (!help || !line) return;
 
-  // slotが無い＝×を消す（復元時にnull渡したい時用）
-  if (!slotEl) {
+  if (index === null || index === undefined) {
     help.classList.remove("active");
     help.style.removeProperty("--ref-x");
     return;
   }
 
-  // 画面上の位置を“実測”
+  const slot = line.querySelector(`.ref-slot[data-index="${index}"]`);
+  if (!slot) return;
+
   const helpRect = help.getBoundingClientRect();
-  const slotRect = slotEl.getBoundingClientRect();
+  const slotRect = slot.getBoundingClientRect();
 
-  // slotの中心X（画面座標）
-  const slotCenterX = (slotRect.left + slotRect.right) / 2;
-
-  // helpの左端を0としたときのX（px）
-  const x = slotCenterX - helpRect.left;
+  const x = (slotRect.left + slotRect.width / 2) - helpRect.left;
 
   help.classList.add("active");
   help.style.setProperty("--ref-x", `${x}px`);
@@ -120,10 +118,10 @@ if (idx !== null && idx !== undefined) {
   const slot = line.querySelector(`.ref-slot[data-index="${idx}"]`);
   if (slot) {
     slot.classList.add("active");
-    setHelpXFromSlot(side, slot); // ← 実測に変更
+    setHelpX(side, slot); // ← 実測に変更
   }
 } else {
-  setHelpXFromSlot(side, null); // ← 消すときも実測版
+  setHelpX(side, null); // ← 消すときも実測版
 }
 
     // クリック
@@ -135,7 +133,7 @@ if (idx !== null && idx !== undefined) {
         const index = Number(slot.dataset.index);
         reference[side] = index;
 
-        setHelpXFromSlot(side, slot);
+        setHelpX(side, slot);
       });
     });
   });
