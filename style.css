@@ -149,7 +149,7 @@ h1 {
   display: flex;
   width: 256px;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   position: relative;
   margin-bottom: 0;
 }
