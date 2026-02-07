@@ -249,3 +249,5 @@ h1 {
 .ref-line { outline: 1px dashed orange; }
 .ref-help { outline: 1px dashed red; }
 .holes { outline: 1px dashed purple; }
+
+.ref-help { pointer-events: none; }
