@@ -27,8 +27,41 @@
       </select>
     </label>
 
-    <label>左角度：<input id="left-angle" type="text" placeholder="+15"></label>
-    <label>右角度：<input id="right-angle" type="text" placeholder="-9"></label>
+    <div class="side-row">
+  <div class="side-title">左</div>
+
+  <label class="angle">
+    角度
+    <input id="left-angle" type="text" placeholder="+15">
+  </label>
+
+  <div class="disk">
+    <div class="disk-label">ディスク</div>
+    <div class="disk-group" data-side="left">
+      <button type="button" class="chip" data-value="前">前</button>
+      <button type="button" class="chip" data-value="中">中</button>
+      <button type="button" class="chip" data-value="後">後</button>
+    </div>
+  </div>
+</div>
+
+<div class="side-row">
+  <div class="side-title">右</div>
+
+  <label class="angle">
+    角度
+    <input id="right-angle" type="text" placeholder="-9">
+  </label>
+
+  <div class="disk">
+    <div class="disk-label">ディスク</div>
+    <div class="disk-group" data-side="right">
+      <button type="button" class="chip" data-value="前">前</button>
+      <button type="button" class="chip" data-value="中">中</button>
+      <button type="button" class="chip" data-value="後">後</button>
+    </div>
+  </div>
+</div>
   </div>
 
   <button id="saveBtn" type="button">保存</button>
