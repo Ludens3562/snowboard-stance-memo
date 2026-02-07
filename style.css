@@ -222,14 +222,16 @@ h1 {
   font-size: 11px;
   color: #aaa;
   opacity: 0.7;
-  margin: 4px 0;
+  margin: 4px auto;
+
+  width: 256px;
 }
 
 .ref-help.active::after {
   content: "×";
 
   position: absolute;
-  left: 50%;
+  left: var(--ref-x, 50%);
   top: 50%;
   transform: translate(-50%, -50%);
 
