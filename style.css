@@ -58,6 +58,17 @@ h1{
 
 #clearBtn{ margin-top: 8px; }
 
+#saveBtn{
+  background: #4dabf7;   /* ← 読込と同じ色にする */
+  border: 1px solid #4dabf7;
+  color: #fff;
+}
+
+/* 押してる間だけ薄く */
+#saveBtn:active{
+  filter: brightness(1.25);
+}
+
 /* =========================
    Holes (main)
 ========================= */
