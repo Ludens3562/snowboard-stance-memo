@@ -202,18 +202,21 @@ h1{
 
 /* タップ判定（オレンジ枠＝デバッグ） */
 .ref-line{
+  position: relative;   /* ← absoluteやめる */
+  width: 256px;
+  height: 26px;         /* ← helpと同じ高さ */
+  margin: 0 auto;
+
   display: flex;
   justify-content: center;
   gap: 10px;
-  position: relative;
-  margin: 0;
-  pointer-events: auto;
-  margin-top: -2px; /* ←ここで上げる（-1〜-4くらいで調整） */
+
+  z-index: 2;
 }
 
 .ref-slot{
   width: 40px;
-  height: 16px;
+  height: 26px;
 }
 
 /* =========================
