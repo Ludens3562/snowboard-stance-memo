@@ -102,8 +102,8 @@ function renderRefSlots() {
     slot.addEventListener("click", () => {
       const parent = slot.parentElement;
 
-      parent.querySelectorAll(".ref-slot").forEach(s => (s.textContent = ""));
-
+      parent.querySelectorAll(".ref-slot").forEach(s => s.classList.remove("active"));
+      slot.classList.add("active");
       const side = slot.dataset.side;           // "left" or "right"
       const index = Number(slot.dataset.index); // 0〜5
       reference[side] = index;
