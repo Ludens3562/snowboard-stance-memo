@@ -454,3 +454,24 @@ text-shadow:
 .mini-x.active {
   color: #e53935;             /* ←activeだけ赤 */
 }
+
+/* お気に入り（★）ボタン */
+.fav-btn{
+  border: none;
+  background: transparent;
+  font-size: 22px;      /* 好きに調整OK */
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+/* ★（active）を黄色に */
+.fav-btn.active{
+  color: #f6c343;       /* 黄色（好みで変更OK） */
+  text-shadow: 0 1px 0 rgba(0,0,0,0.12); /* ほんのり見やすく */
+}
+
+/* ☆（非active）は薄め */
+.fav-btn:not(.active){
+  color: #bbb;
+}
