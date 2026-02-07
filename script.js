@@ -91,7 +91,7 @@ function loadList() {
 }
 
 function renderTabs() {
-  const list = loadList();
+  const items = ["__FAV__", "__ALL__", ...boards];
 
   const boards = Array.from(
     new Set(list.map(x => (x.board || "").trim()))
@@ -100,7 +100,10 @@ function renderTabs() {
   const items = ["__ALL__", ...boards];
 
   tabsDiv.innerHTML = items.map(b => {
-    const label = b === "__ALL__" ? "全部" : (b === "" ? "未入力" : b);
+    const label =
+  b === "__FAV__" ? "★" :
+  b === "__ALL__" ? "全部" :
+  (b === "" ? "未入力" : b);
     const active = b === selectedBoard ? "active" : "";
     return `<button type="button" class="tab ${active}" data-board="${escapeHtml(b)}">${escapeHtml(label)}</button>`;
   }).join("");
