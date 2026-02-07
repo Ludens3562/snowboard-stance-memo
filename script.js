@@ -127,7 +127,7 @@ function renderRefSlots() {
         const index = Number(slot.dataset.index);
         reference[side] = index;
 
-        setHelpX(side, index);
+        setHelpXFromSlot(side, slot);
       });
     });
   });
