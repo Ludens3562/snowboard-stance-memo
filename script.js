@@ -126,7 +126,10 @@ function render() {
     const card = document.createElement("section");
     card.className = "card";
 
-    const time = item.dateTime ? item.dateTime.slice(11, 16) : "";
+    const time = item.dateTime
+  ? new Date(item.dateTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+  : "";
+    
     const title = `${time ? time + " / " : ""}${item.date || "日付なし"} / ${item.snow || "雪質なし"} / ${item.board || "板名なし"}`;
     const angles = `左 ${item.leftAngle || "?"}°　右 ${item.rightAngle || "?"}°`;
 
