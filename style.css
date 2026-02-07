@@ -208,10 +208,22 @@ h1{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  font-weight: bold;
+
+  font-size: 20px;
+  font-weight: 900;
   line-height: 1;
+
   color: transparent;
+}
+
+.mini-x.active{
+  color: #e53935;
+
+  text-shadow:
+    1px 0 currentColor,
+   -1px 0 currentColor,
+    0 1px currentColor,
+    0 -1px currentColor;
 }
 
 .mini-x.active{
@@ -244,8 +256,14 @@ h1{
   left: var(--ref-x, 50%);
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 33px;
-  font-weight: bold;
+  font-size: 36px;
+font-weight: 900;
+
+text-shadow:
+  1px 0 currentColor,
+ -1px 0 currentColor,
+  0 1px currentColor,
+  0 -1px currentColor;
   color: #e53935;
 
   pointer-events: none;
