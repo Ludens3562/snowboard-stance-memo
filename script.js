@@ -62,17 +62,16 @@ saveBtn.addEventListener("click", () => {
 document.querySelectorAll(".disk-group .chip").forEach(btn => {
   btn.addEventListener("click", () => {
     const group = btn.closest(".disk-group");
+    if (!group) return; // ★追加：構造が違っても落ちない
+
     const side = group.dataset.side;   // left / right
     const value = btn.dataset.value;   // 前/中/後
+    if (!side) return;
 
-    // ★同じのをもう一回押したら解除
-    if (disk[side] === value) {
-      disk[side] = "";                // 解除（未選択にする）
-    } else {
-      disk[side] = value;             // 選択
-    }
+    // 同じのをもう一回押したら解除
+    disk[side] = (disk[side] === value) ? "" : value;
 
-    renderDiskUI();                   // 見た目を更新
+    renderDiskUI();
   });
 });
 
@@ -235,7 +234,7 @@ historyDiv.innerHTML = "";
 
   historyDiv.querySelectorAll("[data-fav-id]").forEach(btn => {
    btn.addEventListener("click", () => {
-    const id = btn.dataset.favId;
+    const id = btn.getAttribute("data-fav-id");
     const list = loadList();
 
     const item = list.find(x => x.id === id);
