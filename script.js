@@ -97,7 +97,7 @@ function setHelpX(side, index) {
   const helpRect = help.getBoundingClientRect();
   const slotRect = slot.getBoundingClientRect();
 
-  const x = (slotRect.left + slotRect.width / 2) - helpRect.left;
+  const x = (slotRect.left + slotRect.width / 2) - lineRect.left;
 
   help.classList.add("active");
   help.style.setProperty("--ref-x", `${x}px`);
