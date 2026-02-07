@@ -195,3 +195,10 @@ h1 {
 .mini-x.active{
   color: #e53935;      /* activeだけ赤 */
 }
+
+.ref-help {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  margin: 4px 0;
+}
