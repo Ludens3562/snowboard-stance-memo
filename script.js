@@ -153,10 +153,10 @@ function render() {
   });
 });
 
-  historyDiv.querySelectorAll("button[data-load]").forEach(btn => {
+  historyDiv.querySelectorAll("button[data-load-id]").forEach(btn => {
   btn.addEventListener("click", () => {
-    const idx = Number(btn.dataset.load);
-    const item = loadList()[idx];
+    const id = btn.dataset.loadId;
+    const item = loadList().find(x => x.id === id);
     if (!item) return;
 
     boardEl.value = item.board || "";
@@ -169,11 +169,11 @@ function render() {
       h.classList.toggle("active", !!item.holes?.[i]);
     });
 
-    // ×復元（forEachの外で1回だけ）
+    // ×復元
     reference = item.reference || { left: null, right: null };
     renderRefSlots();
-　  });
-　});
+  });
+});
 }
 
 function renderMini(holesState, ref) {
