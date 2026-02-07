@@ -149,12 +149,10 @@ function render() {
   });
 
   historyDiv.querySelectorAll("button[data-del-id]").forEach(btn => {
-  btn.addEventListener("click", () => {
+   btn.addEventListener("click", () => {
     const id = btn.dataset.delId;
-
-    const list = loadList().filter(x => x.id !== id);
-
-    localStorage.setItem(KEY, JSON.stringify(list));
+    const next = loadList().filter(x => x.id !== id);
+    localStorage.setItem(KEY, JSON.stringify(next));
     render();
   });
 });
