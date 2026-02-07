@@ -80,8 +80,23 @@ function renderTabs() {
   });
 }
 
+function setHelpX(side, index) {
+  const help = document.querySelector(`.ref-help[data-side="${side}"]`);
+  if (!help) return;
+
+  if (index === null || index === undefined) {
+    help.classList.remove("active");
+    help.style.removeProperty("--ref-x");
+    return;
+  }
+
+  const x = 18 + 44 * Number(index); // 36 + gap8 = 44
+
+  help.classList.add("active");
+  help.style.setProperty("--ref-x", `${x}px`);
+}
+
 function renderRefSlots() {
-  // まず左右それぞれ6個のスロットを作る（×はactiveで表示）
   document.querySelectorAll(".ref-line").forEach(line => {
     const side = line.dataset.side;
 
@@ -89,25 +104,26 @@ function renderRefSlots() {
       `<div class="ref-slot" data-index="${i}" data-side="${side}"></div>`
     ).join("");
 
-    // 保存されているreferenceを反映（activeを付ける）
+    // 保存済みを反映
     const idx = reference?.[side];
     if (idx !== null && idx !== undefined) {
       const slot = line.querySelector(`.ref-slot[data-index="${idx}"]`);
       if (slot) slot.classList.add("active");
+      setHelpX(side, idx); // ★ここでref-helpも復元
+    } else {
+      setHelpX(side, null);
     }
 
-    // クリックでactiveを移動＆reference更新
+    // クリック
     line.querySelectorAll(".ref-slot").forEach(slot => {
       slot.addEventListener("click", () => {
-        // 同じ側のactiveを全部外す
         line.querySelectorAll(".ref-slot").forEach(s => s.classList.remove("active"));
+        slot.classList.add("active");
 
-        // 押した所だけactive
-        document.querySelector(`.ref-help[data-side="${side}"]`)
-         .classList.add("active");
+        const index = Number(slot.dataset.index);
+        reference[side] = index;
 
-        // 値を更新
-        reference[side] = Number(slot.dataset.index);
+        setHelpX(side, index);
       });
     });
   });
