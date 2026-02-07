@@ -487,3 +487,16 @@ text-shadow:
   color: white;
   border-color: #f6c343;
 }
+
+/* ========= お気に入り星 ========= */
+.fav-btn{
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #bbb;   /* 通常グレー */
+}
+
+.fav-btn.active{
+  color: #f6c343 !important;  /* ← 強制黄色（重要） */
+}
