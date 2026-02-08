@@ -212,9 +212,12 @@ historyDiv.innerHTML = "";
     card.innerHTML = `
      <div style="display:flex; justify-content:space-between; align-items:center;">
       <b>${escapeHtml(title)}</b>
-      <button type="button" class="fav-btn ${fav ? "active" : ""}" data-fav-id="${item.id}">
-       ${favLabel}
-      </button>
+      <button type="button"
+  class="btn-del"
+  data-del-id="${item.id}"
+  ${fav ? "disabled title='お気に入りは削除できません'" : ""}>
+  削除
+</button>
      </div>
 
      <div>${escapeHtml(setupLine)}</div>
