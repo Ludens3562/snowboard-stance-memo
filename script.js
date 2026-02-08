@@ -201,9 +201,18 @@ function render() {
       : "";
 
     const dateLabel = item.dateTime ? formatDateJP(item.dateTime) : "日付なし";
-    const title = `${time ? time + " / " : ""}${dateLabel} / ${item.snow || "雪質なし"} / ${item.board || "板名なし"}`;
+    const timeLabel = item.dateTime
+     ? new Date(item.dateTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+     : "";
+
+    const boardLabel = item.board || "板名なし";
+    const snowLabel  = item.snow  || "雪質なし";
+
+    const title = `${boardLabel} / ${dateLabel} / ${timeLabel} / ${snowLabel}`;
     const leftDisk = item.disk?.left || "";
     const rightDisk = item.disk?.right || "";
+    
+    const commentText = (item.comment || "").trim();
 
     const setupLine = `左 ${item.leftAngle || "?"}°  ${leftDisk}　右 ${item.rightAngle || "?"}°  ${rightDisk}`;
 
@@ -227,6 +236,7 @@ function render() {
       <div>${escapeHtml(setupLine)}</div>
       <div>${escapeHtml(setupLine)}</div>
 ${comment ? `<div class="comment">${escapeHtml(comment)}</div>` : ""}
+${commentText ? `<div class="comment">${escapeHtml(commentText)}</div>` : ""}
 
       const comment = (item.comment || "").trim();
 
