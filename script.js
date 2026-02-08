@@ -5,7 +5,10 @@ const historyDiv = document.getElementById("history");
 
 const boardEl = document.getElementById("board");
 const snowEl = document.getElementById("snow");
+
 const commentEl = document.getElementById("comment");
+if (commentEl) commentEl.value = "";
+
 const leftAngleEl = document.getElementById("left-angle");
 const rightAngleEl = document.getElementById("right-angle");
 const saveBtn = document.getElementById("saveBtn");
@@ -355,7 +358,10 @@ list.sort((a, b) => {
 
       boardEl.value = item.board || "";
       snowEl.value = item.snow || "";
+      
       commentEl.value = item.comment || "";
+      if (commentEl) commentEl.value = item.comment || "";
+      
       leftAngleEl.value = item.leftAngle || "";
       rightAngleEl.value = item.rightAngle || "";
 
