@@ -215,30 +215,31 @@ function render() {
     ? all
     : all.filter(x => (x.board || "").trim() === selectedBoard);
 
-  if (favSortOn) {
-  list.sort((a, b) => Number(!!b.favorite) - Number(!!a.favorite));
-  }
-
   const cmpStr = (a, b) => String(a || "").localeCompare(String(b || ""), "ja");
 
-// メインソート
-switch (sortMode) {
-  case "savedAsc":
-    list.sort((a, b) => String(a.dateTime||"").localeCompare(String(b.dateTime||"")));
-    break;
+  const compareMain = (a, b) => {
+    switch (sortMode) {
+      case "savedAsc":
+        return String(a.dateTime || "").localeCompare(String(b.dateTime || ""));
 
-  case "savedDesc":
-    list.sort((a, b) => String(b.dateTime||"").localeCompare(String(a.dateTime||"")));
-    break;
+      case "savedDesc":
+        return String(b.dateTime || "").localeCompare(String(a.dateTime || ""));
 
-  case "boardAsc":
-    list.sort((a, b) => cmpStr(a.board, b.board));
-    break;
+      case "boardAsc":
+        return cmpStr(a.board, b.board);
 
-  case "snowAsc":
-    list.sort((a, b) => cmpStr(a.snow, b.snow));
-    break;
-}
+      case "snowAsc":
+        return cmpStr(a.snow, b.snow);
+
+      default:
+        return 0;
+    }
+  };
+
+  list.sort((a, b) => {
+    const favDiff = favSortOn ? Number(!!b.favorite) - Number(!!a.favorite) : 0;
+    return favDiff || compareMain(a, b);
+  });
 
   historyDiv.innerHTML = "";
 
@@ -410,6 +411,7 @@ function renderMini(holesState, ref) {
 function miniSide(label, sideArr, refIndex) {
   const top = sideArr.slice(0, 6);
   const bottom = sideArr.slice(6, 12);
+  const refNumber = refIndex === null || refIndex === undefined ? null : Number(refIndex);
 
   return `
     <div class="mini-side">
@@ -421,7 +423,7 @@ function miniSide(label, sideArr, refIndex) {
 
       <div class="mini-ref">
         ${Array.from({ length: 6 }, (_, i) =>
-          `<span class="mini-x ${i === Number(refIndex) ? "active" : ""}">×</span>`
+          `<span class="mini-x ${refNumber !== null && !Number.isNaN(refNumber) && i === refNumber ? "active" : ""}">×</span>`
         ).join("")}
       </div>
 
