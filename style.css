@@ -63,9 +63,17 @@ h1{
   margin-bottom: 12px;
 }
 
+.meta label{
+  display: grid;
+  gap: 4px;
+}
+
 .meta input,
-.meta select{
+.meta select,
+.meta textarea{
   font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .comment{
@@ -240,9 +248,10 @@ h1{
 ========================= */
 .side-row{
   display: grid;
-  grid-template-columns: 34px 1fr auto;
+  grid-template-columns: 34px 1fr;
+  grid-template-rows: auto auto;
   gap: 10px;
-  align-items: center;
+  align-items: start;
 }
 
 .side-title{
@@ -262,7 +271,8 @@ h1{
 .disk{
   display: grid;
   gap: 4px;
-  justify-items: end;
+  justify-items: start;
+  grid-column: 2;
 }
 .disk-label{
   font-size: 12px;
@@ -292,7 +302,7 @@ h1{
 @media (max-width: 420px){
   .side-row{ grid-template-columns: 34px 1fr; }
   .disk{
-    grid-column: 1 / -1;
+    grid-column: 2;
     justify-items: start;
   }
 }
