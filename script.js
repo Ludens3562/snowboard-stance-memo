@@ -57,6 +57,7 @@ saveBtn.addEventListener("click", () => {
   list.unshift(item);
   localStorage.setItem(KEY, JSON.stringify(list));
   render();
+  showToast("保存しました");
 });
 
 document.querySelectorAll(".disk-group .chip").forEach(btn => {
@@ -259,6 +260,7 @@ function render() {
       item.favorite = !item.favorite;
       localStorage.setItem(KEY, JSON.stringify(list));
       render();
+      showToast(item.favorite ? "お気に入り追加 ⭐" : "お気に入り解除");
     });
   });
 
@@ -271,6 +273,7 @@ function render() {
       const next = loadList().filter(x => x.id !== id);
       localStorage.setItem(KEY, JSON.stringify(next));
       render();
+      showToast("削除しました");
     });
   });
 
