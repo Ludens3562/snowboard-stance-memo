@@ -166,6 +166,7 @@ function renderTabs() {
 
       // それ以外は普通に絞り込み
       selectedBoard = board;
+      saveUI();
       render();
     });
   });
