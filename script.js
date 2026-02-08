@@ -220,7 +220,6 @@ function render() {
     const favLabel = fav ? "★" : "☆";
 
     card.innerHTML = `
-    card.innerHTML = `
   <div style="display:flex; justify-content:space-between; align-items:center;">
     <b>${escapeHtml(title)}</b>
 
