@@ -14,7 +14,7 @@ const tabsDiv = document.getElementById("boardTabs");
 const sortModeEl = document.getElementById("sortMode");
 
 if (sortModeEl) {
-  sortModeEl.value = sortMode;
+  sortModeEl.value = sortMode; // ← 初期表示を合わせる
   sortModeEl.addEventListener("change", () => {
     sortMode = sortModeEl.value;
     showToast(`ソート：${sortModeEl.options[sortModeEl.selectedIndex].text}`, "info");
