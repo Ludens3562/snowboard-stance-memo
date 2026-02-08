@@ -11,6 +11,7 @@ const rightAngleEl = document.getElementById("right-angle");
 const saveBtn = document.getElementById("saveBtn");
 const clearBtn = document.getElementById("clearBtn"); // ← 追加
 const tabsDiv = document.getElementById("boardTabs");
+const sortModeEl = document.getElementById("sortMode");
 let selectedBoard = "__ALL__";
 
 let favSortOn = true;      // ★を上にするON/OFF（初期はONでもOFFでもOK）
