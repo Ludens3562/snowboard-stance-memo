@@ -266,12 +266,10 @@ function render() {
   });
 
   // 削除（お気に入りは無視）
-  historyDiv.querySelectorAll("button[data-del-id]").forEach(btn => {
+  historyDiv.querySelectorAll('button[data-del-id]').forEach(btn => {
   btn.addEventListener("click", () => {
-
-    // ★お気に入り保護 → トースト出して終了
     if (btn.dataset.protected === "1") {
-      showToast("★お気に入りは削除できません", "error");
+      showToast("★お気に入りは削除できません", 1600);
       return;
     }
 
@@ -279,8 +277,7 @@ function render() {
     const next = loadList().filter(x => x.id !== id);
     localStorage.setItem(KEY, JSON.stringify(next));
     render();
-
-    showToast("削除しました", "error");
+    showToast("削除しました", 1600);
   });
 });
 
