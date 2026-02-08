@@ -231,17 +231,18 @@ function render() {
       </div>
 
       <div class="history-actions">
-        <button type="button" class="btn-load" data-load-id="${item.id}">読込</button>
+  <button type="button" class="btn-load" data-load-id="${item.id}">読込</button>
 
-        <button
-          type="button"
-          class="btn-del"
-          data-del-id="${item.id}"
-          ${fav ? "disabled title='お気に入りは削除できません'" : ""}
-        >
-          削除
-        </button>
-      </div>
+  <button
+    type="button"
+    class="btn-del ${fav ? "is-protected" : ""}"
+    data-del-id="${item.id}"
+    data-protected="${fav ? "1" : "0"}"
+    title="${fav ? "お気に入りは削除できません" : "削除"}"
+  >
+    削除
+  </button>
+</div>
     `;
 
     historyDiv.appendChild(card);
