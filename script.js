@@ -412,6 +412,7 @@ function miniSide(label, sideArr, refIndex) {
   const top = sideArr.slice(0, 6);
   const bottom = sideArr.slice(6, 12);
   const refNumber = refIndex === null || refIndex === undefined ? null : Number(refIndex);
+  const isRefActive = (i) => refNumber !== null && !Number.isNaN(refNumber) && i === refNumber;
 
   return `
     <div class="mini-side">
@@ -423,7 +424,7 @@ function miniSide(label, sideArr, refIndex) {
 
       <div class="mini-ref">
         ${Array.from({ length: 6 }, (_, i) =>
-          `<span class="mini-x ${refNumber !== null && !Number.isNaN(refNumber) && i === refNumber ? "active" : ""}">×</span>`
+          `<span class="mini-x ${isRefActive(i) ? "active" : ""}">×</span>`
         ).join("")}
       </div>
 
