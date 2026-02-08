@@ -113,7 +113,17 @@
   </section>
 </div>
 
-<div id="boardTabs" class="tabs"></div>
+<div class="tabs-bar">
+  <div id="boardTabs" class="tabs"></div>
+
+  <select id="sortMode" class="sort-select">
+    <option value="savedDesc">保存日↓</option>
+    <option value="savedAsc">保存日↑</option>
+    <option value="boardAsc">板名</option>
+    <option value="snowAsc">雪質</option>
+  </select>
+</div>
+  
 <div id="history"></div>
 
 <script src="script.js?v=30"></script>
