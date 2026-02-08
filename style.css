@@ -493,6 +493,7 @@ h1{
 #toast.error   { background: var(--red); }
 #toast.star    { background: var(--star); color:#333; }
 #toast.info    { background: #555; }
+#toast.rode    { background: var(--green); }
 
 .btn-del.is-protected{
   opacity: 0.45;
