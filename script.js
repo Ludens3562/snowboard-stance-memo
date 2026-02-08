@@ -267,6 +267,7 @@ function render() {
   // 削除（お気に入りは無視）
   historyDiv.querySelectorAll("button[data-del-id]").forEach(btn => {
     btn.addEventListener("click", () => {
+      
       if (btn.disabled) {
   showToast("★お気に入りは削除できません", "error");
   return;
