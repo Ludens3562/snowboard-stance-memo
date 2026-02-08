@@ -488,3 +488,8 @@ h1{
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+
+.btn-del.is-protected{
+  opacity: 0.45;
+  filter: grayscale(0.2);
+}
