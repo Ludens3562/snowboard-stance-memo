@@ -300,6 +300,18 @@ function render() {
   });
 }
 
+function showToast(message, time = 1600){
+  const el = document.getElementById("toast");
+  if (!el) return;
+
+  el.textContent = message;
+  el.classList.add("show");
+
+  setTimeout(() => {
+    el.classList.remove("show");
+  }, time);
+}
+
 function renderMini(holesState, ref) {
   const total = 24;
   const arr = Array.from({ length: total }, (_, i) => !!holesState[i]);
