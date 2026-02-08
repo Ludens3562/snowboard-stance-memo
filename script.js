@@ -200,8 +200,8 @@ function render() {
       ? new Date(item.dateTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       : "";
 
-    const title = `${time ? time + " / " : ""}${item.date || "日付なし"} / ${item.snow || "雪質なし"} / ${item.board || "板名なし"}`;
-
+    const dateLabel = item.dateTime ? formatDateJP(item.dateTime) : "日付なし";
+    const title = `${time ? time + " / " : ""}${dateLabel} / ${item.snow || "雪質なし"} / ${item.board || "板名なし"}`;
     const leftDisk = item.disk?.left || "";
     const rightDisk = item.disk?.right || "";
 
@@ -375,6 +375,14 @@ function escapeHtml(str) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function formatDateJP(iso){
+  const d = new Date(iso);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
 }
 
 render();
