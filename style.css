@@ -68,6 +68,15 @@ h1{
   font-size: 16px;
 }
 
+.comment{
+  margin-top: 6px;
+  padding: 8px;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
 /* 保存・クリア */
 #saveBtn,
 #clearBtn{
