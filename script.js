@@ -13,6 +13,11 @@ const clearBtn = document.getElementById("clearBtn"); // ← 追加
 const tabsDiv = document.getElementById("boardTabs");
 let selectedBoard = "__ALL__";
 
+let favSortOn = true; // ★ソートON/OFF
+
+let favSortOn = true;      // ★を上にするON/OFF（初期はONでもOFFでもOK）
+let sortMode = "savedDesc"; // メインソート（将来増やす）
+
 let reference = { left: null, right: null };
 
 let disk = { left: "", right: "" };
@@ -97,7 +102,6 @@ function renderTabs() {
     new Set(list.map(x => (x.board || "").trim()))
   );
 
-  // ★タブを先頭に追加
   const items = ["__FAV__", "__ALL__", ...boards];
 
   tabsDiv.innerHTML = items.map(b => {
@@ -106,14 +110,31 @@ function renderTabs() {
       b === "__ALL__" ? "全部" :
       (b === "" ? "未入力" : b);
 
-    const active = b === selectedBoard ? "active" : "";
+    // ★タブだけ特別：favSortOn が true のとき active
+    const active =
+      (b === "__FAV__") ? (favSortOn ? "active" : "") :
+      (b === selectedBoard ? "active" : "");
 
     return `<button type="button" class="tab ${active}" data-board="${escapeHtml(b)}">${escapeHtml(label)}</button>`;
   }).join("");
 
   tabsDiv.querySelectorAll("button.tab").forEach(btn => {
     btn.addEventListener("click", () => {
-      selectedBoard = btn.getAttribute("data-board") ?? "__ALL__";
+      const board = btn.getAttribute("data-board") ?? "__ALL__";
+
+      // ★タブは「絞り込み」じゃなく「★ソート切替」
+      if (board === "__FAV__") {
+        favSortOn = !favSortOn;
+        showToast(
+          favSortOn ? "★ソート：ON" : "★ソート：OFF",
+          favSortOn ? "star" : "info"
+        );
+        render();
+        return;
+      }
+
+      // それ以外は普通に絞り込み
+      selectedBoard = board;
       render();
     });
   });
@@ -184,8 +205,9 @@ function render() {
     : (selectedBoard === "__FAV__") ? all.filter(x => !!x.favorite)
     : all.filter(x => (x.board || "").trim() === selectedBoard);
 
-  // ★お気に入りを上に
+  if (favSortOn) {
   list.sort((a, b) => Number(!!b.favorite) - Number(!!a.favorite));
+  }
 
   historyDiv.innerHTML = "";
 
