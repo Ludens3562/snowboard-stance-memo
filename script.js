@@ -13,8 +13,6 @@ const clearBtn = document.getElementById("clearBtn"); // ← 追加
 const tabsDiv = document.getElementById("boardTabs");
 let selectedBoard = "__ALL__";
 
-let favSortOn = true; // ★ソートON/OFF
-
 let favSortOn = true;      // ★を上にするON/OFF（初期はONでもOFFでもOK）
 let sortMode = "savedDesc"; // メインソート（将来増やす）
 
