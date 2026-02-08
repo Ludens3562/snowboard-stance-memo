@@ -4,8 +4,8 @@ const holes = [...document.querySelectorAll(".hole")];
 const historyDiv = document.getElementById("history");
 
 const boardEl = document.getElementById("board");
-const dateEl = document.getElementById("date");
 const snowEl = document.getElementById("snow");
+const commentEl = document.getElementById("comment");
 const leftAngleEl = document.getElementById("left-angle");
 const rightAngleEl = document.getElementById("right-angle");
 const saveBtn = document.getElementById("saveBtn");
@@ -23,8 +23,8 @@ holes.forEach(h => h.addEventListener("click", () => h.classList.toggle("active"
 // ✅ クリア（保存の外に置く）
 clearBtn.addEventListener("click", () => {
   boardEl.value = "";
-  dateEl.value = "";
   snowEl.value = "";
+  commentEl.value = "";
   leftAngleEl.value = "";
   rightAngleEl.value = "";
   holes.forEach(h => h.classList.remove("active"));
@@ -42,8 +42,8 @@ saveBtn.addEventListener("click", () => {
     id: String(Date.now()),
     favorite: false,
     board: boardEl.value.trim(),
-    date: dateEl.value,
     snow: snowEl.value,
+    comment: commentEl.value.trim(),
     leftAngle: leftAngleEl.value.trim(),
     rightAngle: rightAngleEl.value.trim(),
     disk: { ...disk },
@@ -293,8 +293,8 @@ function render() {
       if (!item) return;
 
       boardEl.value = item.board || "";
-      dateEl.value = item.date || "";
       snowEl.value = item.snow || "";
+      commentEl.value = item.comment || "";
       leftAngleEl.value = item.leftAngle || "";
       rightAngleEl.value = item.rightAngle || "";
 
