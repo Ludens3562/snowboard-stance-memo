@@ -509,3 +509,21 @@ h1{
   opacity: 0.45;
   filter: grayscale(0.2);
 }
+
+.tabs-bar{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tabs{
+  flex: 1;
+}
+
+.sort-select{
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  border: 1px solid #bbb;
+  background: #fff;
+}
