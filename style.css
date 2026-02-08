@@ -173,7 +173,7 @@ h1{
 
 /* ref-wrap の直後にある下の row だけに余白を付ける */
 .ref-wrap + .row{
-  margin-top: 6px;
+  margin-top: 26px;
 }
 
 /* 表示側 */
